@@ -32,7 +32,7 @@ class _MenuItemState extends State<MenuItem> {
             });
           },
           child: GestureDetector(
-            onDoubleTap: () => widget.onPress(),
+            onTap: () => widget.onPress(),
             child: AnimatedContainer(
               duration: Duration(milliseconds: 300),
               width: 150,

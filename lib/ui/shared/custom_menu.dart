@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:web_vertical_landingpage/provider/page_provider.dart';
 import 'package:web_vertical_landingpage/ui/shared/item_menu.dart';
 
 class CustomMenuWidget extends StatefulWidget {
@@ -21,6 +23,7 @@ class _CustomMenuWidgetState extends State<CustomMenuWidget>
 
   @override
   Widget build(BuildContext context) {
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
     return MouseRegion(
       cursor: SystemMouseCursors.click, //obtenemos el cursor del moouse
       child: GestureDetector(
@@ -43,11 +46,46 @@ class _CustomMenuWidgetState extends State<CustomMenuWidget>
               children: [
                 _menuTitle(isOpen: isOpen, controller: controller),
                 if (isOpen) ...[
-                  MenuItem(text: 'home', onPress: () {}),
-                  MenuItem(text: 'About', onPress: () {}),
-                  MenuItem(text: 'Contact', onPress: () {}),
-                  MenuItem(text: 'Location', onPress: () {}),
-                  MenuItem(text: 'Pricing', onPress: () {}),
+                  MenuItem(
+                      text: 'home',
+                      onPress: () {
+                        pageProvider.goTo(0);
+                        setState(() {
+                          isOpen = !isOpen;
+                        });
+                      }),
+                  MenuItem(
+                      text: 'About',
+                      onPress: () {
+                        pageProvider.goTo(1);
+                        setState(() {
+                          isOpen = !isOpen;
+                        });
+                      }),
+                  MenuItem(
+                      text: 'Contact',
+                      onPress: () {
+                        pageProvider.goTo(2);
+                        setState(() {
+                          isOpen = !isOpen;
+                        });
+                      }),
+                  MenuItem(
+                      text: 'Location',
+                      onPress: () {
+                        pageProvider.goTo(3);
+                        setState(() {
+                          isOpen = !isOpen;
+                        });
+                      }),
+                  MenuItem(
+                      text: 'Pricing',
+                      onPress: () {
+                        pageProvider.goTo(4);
+                        setState(() {
+                          isOpen = !isOpen;
+                        });
+                      }),
                 ]
               ],
             )),

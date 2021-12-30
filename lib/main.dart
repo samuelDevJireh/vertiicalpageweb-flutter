@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:web_vertical_landingpage/provider/page_provider.dart';
 import 'package:web_vertical_landingpage/router/router.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(AppState());
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+        child: MyApp(),
+        providers: [ChangeNotifierProvider(create: (_) => PageProvider())]);
+  }
+}
 
 class MyApp extends StatefulWidget {
   @override
